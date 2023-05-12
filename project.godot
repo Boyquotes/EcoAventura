@@ -14,30 +14,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Actors/Actor.gd"
 }, {
-"base": "RigidBody2D",
-"class": "Bullet",
-"language": "GDScript",
-"path": "res://src/Objects/Bullet.gd"
-}, {
 "base": "Area2D",
 "class": "Coin",
 "language": "GDScript",
 "path": "res://src/Objects/Coin.gd"
 }, {
-"base": "Actor",
-"class": "Enemy",
-"language": "GDScript",
-"path": "res://src/Actors/Enemy.gd"
-}, {
-"base": "",
+"base": "EditorVCSInterface",
 "class": "GitAPI",
 "language": "NativeScript",
 "path": "res://addons/godot-git-plugin/git_api.gdns"
-}, {
-"base": "Position2D",
-"class": "Gun",
-"language": "GDScript",
-"path": "res://src/Actors/Gun.gd"
 }, {
 "base": "Actor",
 "class": "Player",
@@ -46,11 +31,8 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Actor": "",
-"Bullet": "",
 "Coin": "",
-"Enemy": "",
 "GitAPI": "",
-"Gun": "",
 "Player": ""
 }
 
@@ -94,6 +76,10 @@ version_control_plugin_name="GitAPI"
 [gdnative]
 
 singletons=[ "res://addons/godot-git-plugin/git_api.gdnlib" ]
+
+[global]
+
+mobile=true
 
 [image_loader]
 

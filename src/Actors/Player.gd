@@ -39,7 +39,6 @@ func _ready():
 # 2. Calculates the move velocity.
 # 3. Moves the character.
 # 4. Updates the sprite direction.
-# 5. Shoots bullets.
 # 6. Updates the animation.
 
 # Splitting the physics process logic into functions not only makes it
@@ -76,6 +75,9 @@ func _physics_process(_delta):
 			if sprite.scale.x < 0: sprite.scale.x = -sprite.scale.x 
 	else:
 		sprite.play("default")
+		
+	if _velocity.y and not is_on_floor() and not is_on_platform:
+		sprite.play("pular")
 
 func get_direction():
 	return Vector2(

@@ -1,0 +1,88 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://src/Actors/Player.gd" type="Script" id=1]
+[ext_resource path="res://assets/art/player/parado.png" type="Texture" id=2]
+[ext_resource path="res://assets/audio/sfx/jump.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/art/player/caminhando1.png" type="Texture" id=4]
+[ext_resource path="res://assets/art/ui/touch_button_left.png" type="Texture" id=5]
+[ext_resource path="res://assets/art/ui/touch_button_right.png" type="Texture" id=6]
+[ext_resource path="res://assets/art/ui/touch_button_jump.png" type="Texture" id=7]
+[ext_resource path="res://assets/art/ui/touch_button_fire.png" type="Texture" id=8]
+[ext_resource path="res://assets/art/player/caminhando2.png" type="Texture" id=9]
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 10, 14 )
+
+[sub_resource type="SpriteFrames" id=12]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 9 ), ExtResource( 4 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "caminhar",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Player" type="KinematicBody2D"]
+collision_mask = 30
+script = ExtResource( 1 )
+
+[node name="PlatformDetector" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 0, 6 )
+collision_mask = 8
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2( 0, -28 )
+current = true
+zoom = Vector2( 0.5, 0.5 )
+process_mode = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -14 )
+shape = SubResource( 11 )
+
+[node name="Jump" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="Left" type="TouchScreenButton" parent="UI"]
+position = Vector2( 27.7593, 360.87 )
+scale = Vector2( 1.49157, 1.46265 )
+normal = ExtResource( 5 )
+passby_press = true
+action = "move_left"
+visibility_mode = 1
+
+[node name="Right" type="TouchScreenButton" parent="UI"]
+position = Vector2( 121.542, 361.415 )
+scale = Vector2( 1.49157, 1.46265 )
+normal = ExtResource( 6 )
+passby_press = true
+action = "move_right"
+visibility_mode = 1
+
+[node name="Jump" type="TouchScreenButton" parent="UI"]
+position = Vector2( 666.224, 359.02 )
+scale = Vector2( 1.49157, 1.46265 )
+normal = ExtResource( 7 )
+action = "jump"
+visibility_mode = 1
+
+[node name="Fire" type="TouchScreenButton" parent="UI"]
+position = Vector2( 668.073, 262.788 )
+scale = Vector2( 1.49157, 1.46265 )
+normal = ExtResource( 8 )
+action = "shoot"
+visibility_mode = 1
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -1, -14 )
+scale = Vector2( 0.0396341, 0.0430464 )
+frames = SubResource( 12 )
+animation = "caminhar"

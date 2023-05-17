@@ -27,3 +27,4 @@ margin_top = 385.0
 margin_right = -314.0
 margin_bottom = -24.0
 nivel = "res://src/Level/Level.tscn"
+selecionado = true

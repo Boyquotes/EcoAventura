@@ -12,7 +12,7 @@ var selecionado = false
 
 onready var _textura = $Botao
 
-onready var selecaoNivel = get_tree()
+onready var selecaoNivel = get_parent().get_parent()
 
 func selecionar():
 	selecionado = true

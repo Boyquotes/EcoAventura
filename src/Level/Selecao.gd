@@ -11,6 +11,9 @@ onready var pato = ResourceLoader.load("res://src/Actors/Player.tscn").instance(
 func _ready():
 	pass
 
+func _input(event):
+	if event.is_action_pressed("ui_accept"):
+		$Fundo1/Fase1.select_nivel()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

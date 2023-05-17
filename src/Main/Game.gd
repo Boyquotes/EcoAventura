@@ -7,19 +7,9 @@ extends Node
 # that is to say, another node or script should not access them.
 onready var _pause_menu = $InterfaceLayer/PauseMenu
 
-
 func _init():
 	OS.min_window_size = OS.window_size
 	OS.max_window_size = OS.get_screen_size()
-
-
-func _notification(what):
-	if what == NOTIFICATION_WM_QUIT_REQUEST:
-		# We need to clean up a little bit first to avoid Viewport errors.
-		if name == "Splitscreen":
-			$Black/SplitContainer/ViewportContainer1.free()
-			$Black.queue_free()
-
 
 func _unhandled_input(event):
 	if event.is_action_pressed("toggle_fullscreen"):
@@ -45,14 +35,3 @@ func _unhandled_input(event):
 		else:
 			_pause_menu.close()
 		get_tree().set_input_as_handled()
-
-	elif event.is_action_pressed("splitscreen"):
-		if name == "Splitscreen":
-			# We need to clean up a little bit first to avoid Viewport errors.
-			$Black/SplitContainer/ViewportContainer1.free()
-			$Black.queue_free()
-			# warning-ignore:return_value_discarded
-			get_tree().change_scene("res://src/Main/Game.tscn")
-		else:
-			# warning-ignore:return_value_discarded
-			get_tree().change_scene("res://src/Main/Splitscreen.tscn")

@@ -1,5 +1,6 @@
 extends Node2D
 
+var collectedCoin = 0
 
 const LIMIT_LEFT = -315
 const LIMIT_TOP = -250

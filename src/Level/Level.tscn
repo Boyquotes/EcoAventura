@@ -59,6 +59,7 @@ position = Vector2( 269.878, 573.77 )
 
 [node name="lixo" parent="Lixos/latinha" instance=ExtResource( 4 )]
 position = Vector2( 101.122, -34.77 )
+teste = 0
 textura = "res://assets/art/lixo/EcoAventura_#g36.png"
 
 [node name="banana" type="Node2D" parent="Lixos"]

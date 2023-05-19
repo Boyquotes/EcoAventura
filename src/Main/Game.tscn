@@ -13,7 +13,7 @@ script = ExtResource( 2 )
 [node name="InterfaceLayer" type="CanvasLayer" parent="."]
 layer = 100
 
-[node name="Selecao" parent="InterfaceLayer" instance=ExtResource( 3 )]
+[node name="SelecaoNivel" parent="InterfaceLayer" instance=ExtResource( 3 )]
 pause_mode = 1
 
 [node name="PauseMenu" parent="InterfaceLayer" instance=ExtResource( 1 )]

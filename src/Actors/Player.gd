@@ -10,7 +10,6 @@ const FLOOR_DETECT_DISTANCE = 20.0
 export(String) var action_suffix = ""
 
 onready var platform_detector = $PlatformDetector
-onready var shoot_timer = $ShootAnimation
 onready var sprite = $AnimatedSprite
 onready var sound_jump = $Jump
 

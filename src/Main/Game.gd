@@ -2,13 +2,6 @@ extends Node
 # This class contains controls that should always be accessible, like pausing
 # the game or toggling the window full-screen.
 
-
-# The "_" prefix is a convention to indicate that variables are private,
-# that is to say, another node or script should not access them.
-onready var _pause_menu = $InterfaceLayer/PauseMenu
-
-onready var level = $Level
-
 func _init():
 	OS.min_window_size = OS.window_size
 	OS.max_window_size = OS.get_screen_size()
@@ -29,11 +22,4 @@ func _unhandled_input(event):
 	#   Pause Mode = Process, so it will continue to process even when the game is paused.
 	# To see the Pause Mode of any node, select the node and you'll see "Pause Mode" near the bottom
 	# of the Inspector under "Node" fields.
-	elif event.is_action_pressed("toggle_pause"):
-		var tree = get_tree()
-		tree.paused = not tree.paused
-		if tree.paused:
-			_pause_menu.open()
-		else:
-			_pause_menu.close()
-		get_tree().set_input_as_handled()
+

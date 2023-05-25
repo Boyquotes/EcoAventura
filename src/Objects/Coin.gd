@@ -36,11 +36,11 @@ func _on_body_entered(_body):
 		if level.collectedCoin < 4:
 			animation_player.play("picked")
 			level.collectedCoin += 1
-			return
 	elif teste == tipoLixo.reciclavel:
 		if level.collectedCoin >= 4:
 			animation_player.play("picked")
-			return
+	if level.collectedCoin >= 4:
+		level.uiLixo.setLixo(2)
 #func _on_body_entered(_body):
 #	animation_player.play("picked")
 #	_body.emit_signal("collect_coin")

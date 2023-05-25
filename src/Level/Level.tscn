@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/art/tileset/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://src/Platforms/Platform.tscn" type="PackedScene" id=3]
@@ -6,6 +6,7 @@
 [ext_resource path="res://src/Level/Level.gd" type="Script" id=5]
 [ext_resource path="res://assets/art/platforms/moving_platform.png" type="Texture" id=6]
 [ext_resource path="res://src/Level/ParallaxBackground.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/Actors/Player.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Animation" id=1]
 resource_name = "move"
@@ -152,3 +153,8 @@ position = Vector2( -0.0684814, 0.0254364 )
 polygon = PoolVector2Array( -129.699, 9.94633, -47, -10.5, 8, -7, 10, -1.5, -46.75, -4, -130, 15 )
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 7 )]
+
+[node name="Player" parent="." instance=ExtResource( 9 )]
+position = Vector2( 117, 533 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]

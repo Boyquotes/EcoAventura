@@ -1,11 +1,10 @@
 extends Control
 
-
-onready var pato = ResourceLoader.load("res://src/Actors/Player.tscn").instance()
 var carregandoNivel = false
-onready var player = $Fundo1/Zeca/AnimationPlayer
 
 var nivelSelecionado = false
+
+onready var player = $Fundo1/Zeca/AnimationPlayer
 
 func _ready():
 	pass
@@ -16,6 +15,6 @@ func _input(event):
 		player.play("Pular")
 
 
-func _on_AnimationPlayer_animation_finished(anim):
+func _on_AnimationPlayer_animation_finished(_anim):
 	$Fundo1/Fase1.select_nivel()
 	hide()

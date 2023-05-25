@@ -24,9 +24,8 @@ func _ready():
 func select_nivel():
 	if not selecaoNivel.carregandoNivel:
 		selecaoNivel.carregandoNivel = true
-		var root = get_tree().get_root().get_child(0)
+		var root = get_tree().get_root().get_node("Game")
 		var current_scene = root.get_child(0)
-
 		current_scene.queue_free()
 		# 2. Load the new scene.
 		var new_scene = ResourceLoader.load(nivel)
@@ -34,8 +33,6 @@ func select_nivel():
 		# 3. Instance the new scene.
 		current_scene = new_scene.instance()
 		root.add_child(current_scene)
-		current_scene.add_child(selecaoNivel.pato)
-		selecaoNivel.pato.position = Vector2(120, 530)
 		selecaoNivel.carregandoNivel = false
 		pass
 

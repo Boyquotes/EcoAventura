@@ -17,3 +17,4 @@ layer = 100
 pause_mode = 1
 
 [node name="PauseMenu" parent="InterfaceLayer" instance=ExtResource( 1 )]
+visible = false

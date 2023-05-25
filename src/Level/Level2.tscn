@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/art/tileset/tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://src/Level/Level2.gd" type="Script" id=2]
+[ext_resource path="res://src/Platforms/Platform.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/Actors/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/Level/ParallaxBackground.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Animation" id=2]
+length = 6.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 500, 150 ), Vector2( 650, 150 ) ]
+}
+
+[node name="Level" type="Node2D"]
+pause_mode = 1
+script = ExtResource( 2 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 16
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 1, 7, 0, 2, 7, 0, 3, 7, 0, 4, 7, 0, 5, 3, 0, 65537, 7, 0, 65538, 7, 0, 65539, 7, 0, 65540, 7, 0, 65541, 3, 0, 131073, 7, 0, 131074, 7, 0, 131075, 7, 0, 131076, 7, 0, 131077, 3, 0, 196609, 7, 0, 196610, 7, 0, 196611, 7, 0, 196612, 7, 0, 196613, 3, 0, 196631, 536870913, 0, 196632, 536870912, 0, 196633, 536870912, 0, 196634, 536870912, 0, 262145, 8, 0, 262146, 8, 0, 262147, 8, 0, 262148, 8, 0, 262149, 9, 0, 262167, 536870915, 0, 327703, 536870915, 0, 393238, 536870927, 0, 393239, 536870915, 0, 458753, 20, 0, 458754, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 19, 0, 458758, 0, 0, 458759, 0, 0, 458760, 20, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 458764, 19, 0, 458765, 0, 0, 458766, 0, 0, 458767, 0, 0, 458768, 2, 0, 458775, 536870915, 0, 524289, 7, 0, 524290, 7, 0, 524291, 7, 0, 524292, 7, 0, 524293, 7, 0, 524294, 7, 0, 524295, 7, 0, 524296, 7, 0, 524297, 7, 0, 524298, 7, 0, 524299, 7, 0, 524300, 7, 0, 524301, 7, 0, 524302, 7, 0, 524303, 7, 0, 524305, 0, 0, 524306, 0, 0, 524307, 0, 0, 524308, 0, 0, 524309, 0, 0, 524310, 536870912, 0, 524311, 536870916, 0 )
+
+[node name="Platforms" type="Node" parent="."]
+
+[node name="Platform2" parent="Platforms" instance=ExtResource( 3 )]
+position = Vector2( 550, 150 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/Platform2"]
+autoplay = "move"
+playback_process_mode = 0
+anims/move = SubResource( 2 )
+
+[node name="Platform3" parent="Platforms" instance=ExtResource( 3 )]
+position = Vector2( 398, 178 )
+
+[node name="Platform4" parent="Platforms" instance=ExtResource( 3 )]
+position = Vector2( 397, 92 )
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 7 )]
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+position = Vector2( 392, 190 )

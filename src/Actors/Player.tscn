@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/Actors/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/art/player/parado.png" type="Texture" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://assets/art/ui/touch_button_left.png" type="Texture" id=5]
 [ext_resource path="res://assets/art/ui/touch_button_right.png" type="Texture" id=6]
 [ext_resource path="res://assets/art/ui/touch_button_jump.png" type="Texture" id=7]
-[ext_resource path="res://assets/art/ui/touch_button_fire.png" type="Texture" id=8]
 [ext_resource path="res://assets/art/player/caminhando2.png" type="Texture" id=9]
 
 [sub_resource type="RectangleShape2D" id=11]
@@ -78,13 +77,6 @@ position = Vector2( 666.224, 359.02 )
 scale = Vector2( 1.49157, 1.46265 )
 normal = ExtResource( 7 )
 action = "jump"
-visibility_mode = 1
-
-[node name="Fire" type="TouchScreenButton" parent="UI"]
-position = Vector2( 668.073, 262.788 )
-scale = Vector2( 1.49157, 1.46265 )
-normal = ExtResource( 8 )
-action = "shoot"
 visibility_mode = 1
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]

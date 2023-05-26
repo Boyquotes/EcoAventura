@@ -41,15 +41,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
 
-<<<<<<< HEAD
-[node name="Selecao" parent="InterfaceLayer" instance=ExtResource( 3 )]
-pause_mode = 1
-
-[node name="PauseMenu" parent="InterfaceLayer" instance=ExtResource( 1 )]
-visible = false
-=======
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Transicoes"]
 autoplay = "FadeIn"
 anims/FadeIn = SubResource( 1 )
 anims/RESET = SubResource( 2 )
->>>>>>> c7f1f41b2a384d997b353ebf17f9317172ecf690

@@ -1,9 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/art/tileset/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://assets/audio/music/music.ogg" type="AudioStream" id=2]
 [ext_resource path="res://src/Platforms/Platform.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/Objects/Coin.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/Objects/Lixo.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/Level/Level.gd" type="Script" id=5]
 [ext_resource path="res://assets/art/platforms/moving_platform.png" type="Texture" id=6]
 [ext_resource path="res://src/Level/ParallaxBackground.tscn" type="PackedScene" id=7]
@@ -56,63 +56,39 @@ tile_data = PoolIntArray( -65546, 536870913, 0, -65545, 1, 0, -131044, 536870913
 
 [node name="Lixos" type="Node" parent="."]
 
-[node name="latinha" type="Node2D" parent="Lixos"]
-position = Vector2( 269.878, 573.77 )
-
-[node name="lixo" parent="Lixos/latinha" instance=ExtResource( 4 )]
-position = Vector2( 101.122, -34.77 )
+[node name="latinha" parent="Lixos" instance=ExtResource( 4 )]
+position = Vector2( 371, 539 )
 teste = 0
 textura = "res://assets/art/lixo/EcoAventura_#g36.png"
 
-[node name="banana" type="Node2D" parent="Lixos"]
-position = Vector2( 269.878, 573.77 )
-
-[node name="lixo" parent="Lixos/banana" instance=ExtResource( 4 )]
-position = Vector2( 222.122, -48.77 )
+[node name="banana" parent="Lixos" instance=ExtResource( 4 )]
+position = Vector2( 492, 525 )
 textura = "res://assets/art/lixo/EcoAventura_#g52.png"
 
-[node name="peixe" type="Node2D" parent="Lixos"]
-position = Vector2( 269.878, 573.77 )
-
-[node name="lixo" parent="Lixos/peixe" instance=ExtResource( 4 )]
-position = Vector2( 265.122, 35.23 )
+[node name="peixe" parent="Lixos" instance=ExtResource( 4 )]
+position = Vector2( 535, 609 )
 textura = "res://assets/art/lixo/EcoAventura_#g644.png"
 
-[node name="sacola" type="Node2D" parent="Lixos"]
-position = Vector2( 269.878, 573.77 )
-
-[node name="lixo" parent="Lixos/sacola" instance=ExtResource( 4 )]
-position = Vector2( 324.122, -129.77 )
+[node name="sacola" parent="Lixos" instance=ExtResource( 4 )]
+position = Vector2( 594, 444 )
 teste = 0
 textura = "res://assets/art/lixo/EcoAventura_#g630.png"
 
-[node name="maca" type="Node2D" parent="Lixos"]
-position = Vector2( 269.878, 573.77 )
-
-[node name="lixo" parent="Lixos/maca" instance=ExtResource( 4 )]
-position = Vector2( 541.122, -242.77 )
+[node name="maca" parent="Lixos" instance=ExtResource( 4 )]
+position = Vector2( 811, 331 )
 textura = "res://assets/art/lixo/EcoAventura_#g656.png"
 
-[node name="melancia" type="Node2D" parent="Lixos"]
-position = Vector2( 269.878, 573.77 )
-
-[node name="lixo" parent="Lixos/melancia" instance=ExtResource( 4 )]
-position = Vector2( 207.122, -318.77 )
+[node name="melancia" parent="Lixos" instance=ExtResource( 4 )]
+position = Vector2( 477, 255 )
 textura = "res://assets/art/lixo/EcoAventura_#g676.png"
 
-[node name="garrafa" type="Node2D" parent="Lixos"]
-position = Vector2( 269.878, 573.77 )
-
-[node name="lixo" parent="Lixos/garrafa" instance=ExtResource( 4 )]
-position = Vector2( 143.122, -387.77 )
+[node name="garrafa" parent="Lixos" instance=ExtResource( 4 )]
+position = Vector2( 413, 186 )
 teste = 0
 textura = "res://assets/art/lixo/EcoAventura_#g694.png"
 
-[node name="telinha" type="Node2D" parent="Lixos"]
-position = Vector2( 269.878, 573.77 )
-
-[node name="lixo" parent="Lixos/telinha" instance=ExtResource( 4 )]
-position = Vector2( 16.122, -336.77 )
+[node name="telinha" parent="Lixos" instance=ExtResource( 4 )]
+position = Vector2( 286, 237 )
 teste = 0
 textura = "res://assets/art/lixo/EcoAventura_#g710.png"
 

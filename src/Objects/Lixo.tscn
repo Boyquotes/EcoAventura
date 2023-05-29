@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/audio/sfx/coin_pickup.wav" type="AudioStream" id=3]
-[ext_resource path="res://src/Objects/Coin.gd" type="Script" id=4]
+[ext_resource path="res://src/Objects/Lixo.gd" type="Script" id=4]
 [ext_resource path="res://assets/art/lixo/EcoAventura_#g36.png" type="Texture" id=5]
 
 [sub_resource type="Animation" id=1]
@@ -86,7 +86,7 @@ tracks/0/keys = {
 
 [sub_resource type="CircleShape2D" id=3]
 
-[node name="Coin" type="Area2D"]
+[node name="Lixo" type="Area2D"]
 collision_layer = 0
 monitoring = false
 monitorable = false

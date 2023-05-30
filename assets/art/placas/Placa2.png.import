@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/EcoAventura-3_#g12.png-67c1dbb8d3c7f4f67682f3d36256d1fb.stex"
+path="res://.import/Placa2.png-408f6da3ee7f25583cfb7a50e7622201.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/lixo/EcoAventura-3_#g12.png"
-dest_files=[ "res://.import/EcoAventura-3_#g12.png-67c1dbb8d3c7f4f67682f3d36256d1fb.stex" ]
+source_file="res://assets/art/placas/Placa2.png"
+dest_files=[ "res://.import/Placa2.png-408f6da3ee7f25583cfb7a50e7622201.stex" ]
 
 [params]
 

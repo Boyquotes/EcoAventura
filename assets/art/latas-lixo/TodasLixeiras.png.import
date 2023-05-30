@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/EcoAventura-3_#g204.png-20886ed17e41b8cd33151dfd70e30302.stex"
+path="res://.import/TodasLixeiras.png-77a9c20b3308316e654dfb8b640abd84.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/lixo/EcoAventura-3_#g204.png"
-dest_files=[ "res://.import/EcoAventura-3_#g204.png-20886ed17e41b8cd33151dfd70e30302.stex" ]
+source_file="res://assets/art/latas-lixo/TodasLixeiras.png"
+dest_files=[ "res://.import/TodasLixeiras.png-77a9c20b3308316e654dfb8b640abd84.stex" ]
 
 [params]
 

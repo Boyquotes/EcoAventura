@@ -4,7 +4,6 @@ onready var reciclavel = $Reciclavel
 onready var naoreciclavel = $NaoReciclavel
 
 func setLixo(qual):
-	print(qual)
 	if qual == 0:
 		naoreciclavel.visible = false
 		reciclavel.visible = false

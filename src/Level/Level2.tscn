@@ -55,7 +55,7 @@ tracks/0/keys = {
 "values": [ Vector2( 364, 185 ), Vector2( 364, 90 ), Vector2( 364, 185 ) ]
 }
 
-[node name="Level" type="Node2D"]
+[node name="Level2" type="Node2D"]
 pause_mode = 1
 script = ExtResource( 2 )
 

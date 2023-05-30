@@ -1,26 +1,35 @@
 class_name Lixo
 extends Area2D
 
-onready var animation_player = $AnimationPlayer
-onready var sprite = $sprite
+onready var animation_player: AnimationPlayer = $AnimationPlayer
+onready var lixos: Sprite = $lixos
 enum tipoLixo { reciclavel, organico }
+
+enum TipoLixeira {
+	vidro = 0,
+	plastico = 1,
+	metal = 2,
+	papel = 3,
+	organico = 4
+}
 
 onready var level = get_parent().get_parent()
 
+export(TipoLixeira) var tipoLixeira
+export(int, 0, 15) var textura
 export(tipoLixo) var teste = tipoLixo.organico
-export(String, FILE, "*.png") var textura
 
 func _ready():
-	var texture = load(textura)
-	sprite.set_texture(texture)
+	lixos.frame_coords = Vector2( tipoLixeira, textura )
 
 func _on_body_entered(_body):
-	if teste == tipoLixo.organico:
+	if tipoLixeira == TipoLixeira.organico:
 		if level.collectedCoin < 4:
-			animation_player.play("picked")
 			level.collectedCoin += 1
-	elif teste == tipoLixo.reciclavel:
-		if level.collectedCoin >= 4:
 			animation_player.play("picked")
-	if level.collectedCoin >= 4:
-		level.uiLixo.setLixo(2)
+			if level.collectedCoin == 4:
+				level.uiLixo.setLixo(2)
+	elif level.collectedCoin >= 4:
+		level.collectedCoin += 1
+		animation_player.play("picked")
+	

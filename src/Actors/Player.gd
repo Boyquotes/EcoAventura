@@ -1,10 +1,6 @@
 class_name Player
 extends Actor
 
-
-# warning-ignore:unused_signal
-signal collect_coin()
-
 const FLOOR_DETECT_DISTANCE = 20.0
 
 export(String) var action_suffix = ""
@@ -13,6 +9,7 @@ onready var platform_detector = $PlatformDetector
 onready var sprite = $AnimatedSprite
 onready var sound_jump = $Jump
 
+var animacaoFim = false
 
 func _ready():
 	# Static types are necessary here to avoid warnings.
@@ -48,12 +45,17 @@ func _ready():
 #   you can easily move individual functions.
 func _physics_process(_delta):
 	# Play jump sound
-	if Input.is_action_just_pressed("jump" + action_suffix) and is_on_floor():
-		sound_jump.play()
+	var direction: Vector2
+	var is_jump_interrupted = false
+	if (!animacaoFim):
+		if Input.is_action_just_pressed("jump" + action_suffix) and is_on_floor():
+			sound_jump.play()
 
-	var direction = get_direction()
+		direction = get_direction()
 
-	var is_jump_interrupted = Input.is_action_just_released("jump" + action_suffix) and _velocity.y < 0.0
+		is_jump_interrupted = Input.is_action_just_released("jump" + action_suffix) and _velocity.y < 0.0
+	else:
+		direction = Vector2(-1, 0)
 	_velocity = calculate_move_velocity(_velocity, direction, speed, is_jump_interrupted)
 
 	var snap_vector = Vector2.ZERO
@@ -65,7 +67,7 @@ func _physics_process(_delta):
 	)
 
 	# When the character’s direction changes, we want to to scale the Sprite accordingly to flip it.
-	# This will make Robi face left or right depending on the direction you move.
+	# This will make Zeca face left or right depending on the direction you move.
 	if direction.x != 0:
 		sprite.play("caminhar")
 		if direction.x > 0:
@@ -102,3 +104,6 @@ func calculate_move_velocity(
 		# as to not be too abrupt.
 		velocity.y *= 0.6
 	return velocity
+
+func terminarFase():
+	animacaoFim = true

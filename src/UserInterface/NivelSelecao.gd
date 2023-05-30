@@ -17,9 +17,6 @@ onready var selecaoNivel = get_parent().get_parent()
 func selecionar(value):
 	selecionado = value
 	# _textura.texture.
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 
 func select_nivel():
 	if not selecaoNivel.carregandoNivel:
@@ -34,10 +31,9 @@ func select_nivel():
 		current_scene = new_scene.instance()
 		root.add_child(current_scene)
 		selecaoNivel.carregandoNivel = false
-		pass
+		return current_scene
 
 
 func _on_FaseBotao_pressed():
 	select_nivel()
-	pass # Replace with function body.
 

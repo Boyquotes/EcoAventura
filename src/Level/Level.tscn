@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/art/tileset/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://assets/audio/music/music.ogg" type="AudioStream" id=2]
@@ -42,6 +42,9 @@ tracks/0/keys = {
 "values": [ Vector2( -47, 80 ), Vector2( -47, 407 ) ]
 }
 
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 20, 59.5 )
+
 [node name="Level" type="Node2D"]
 pause_mode = 1
 script = ExtResource( 5 )
@@ -58,39 +61,47 @@ tile_data = PoolIntArray( -65546, 536870913, 0, -65545, 1, 0, -131044, 536870913
 
 [node name="latinha" parent="Lixos" instance=ExtResource( 4 )]
 position = Vector2( 371, 539 )
+tipoLixeira = 2
+textura = 3
 teste = 0
-textura = "res://assets/art/lixo/EcoAventura_#g36.png"
 
 [node name="banana" parent="Lixos" instance=ExtResource( 4 )]
 position = Vector2( 492, 525 )
-textura = "res://assets/art/lixo/EcoAventura_#g52.png"
+tipoLixeira = 4
+textura = 1
 
 [node name="peixe" parent="Lixos" instance=ExtResource( 4 )]
 position = Vector2( 535, 609 )
-textura = "res://assets/art/lixo/EcoAventura_#g644.png"
+tipoLixeira = 4
+textura = 2
 
 [node name="sacola" parent="Lixos" instance=ExtResource( 4 )]
 position = Vector2( 594, 444 )
+tipoLixeira = 1
+textura = 4
 teste = 0
-textura = "res://assets/art/lixo/EcoAventura_#g630.png"
 
 [node name="maca" parent="Lixos" instance=ExtResource( 4 )]
 position = Vector2( 811, 331 )
-textura = "res://assets/art/lixo/EcoAventura_#g656.png"
+tipoLixeira = 4
+textura = 3
 
 [node name="melancia" parent="Lixos" instance=ExtResource( 4 )]
 position = Vector2( 477, 255 )
-textura = "res://assets/art/lixo/EcoAventura_#g676.png"
+tipoLixeira = 4
+textura = 4
 
 [node name="garrafa" parent="Lixos" instance=ExtResource( 4 )]
 position = Vector2( 413, 186 )
+tipoLixeira = 1
+textura = 1
 teste = 0
-textura = "res://assets/art/lixo/EcoAventura_#g694.png"
 
 [node name="telinha" parent="Lixos" instance=ExtResource( 4 )]
 position = Vector2( 286, 237 )
+tipoLixeira = 1
+textura = 6
 teste = 0
-textura = "res://assets/art/lixo/EcoAventura_#g710.png"
 
 [node name="Platforms" type="Node" parent="."]
 
@@ -140,4 +151,18 @@ autoplay = true
 [node name="Player" parent="." instance=ExtResource( 9 )]
 position = Vector2( 117, 533 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Fim" type="Area2D" parent="."]
+position = Vector2( 36, 549 )
+space_override = 3
+
+[node name="TriggerFim" type="CollisionShape2D" parent="Fim"]
+position = Vector2( -26, -57 )
+shape = SubResource( 3 )
+
+[node name="Barreira" type="StaticBody2D" parent="Fim"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Fim/Barreira"]
+position = Vector2( -48, -57 )
+shape = SubResource( 3 )
+
+[connection signal="body_entered" from="Fim" to="." method="_on_Fim_body_entered"]

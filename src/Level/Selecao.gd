@@ -16,5 +16,9 @@ func _input(event):
 
 
 func _on_AnimationPlayer_animation_finished(_anim):
-	$Fundo1/Fase1.select_nivel()
+	var nivel: Level = $Fundo1/Fase1.select_nivel()
+	nivel.connect("nivelAcabado", self, "voltarSelecao")
 	hide()
+
+func voltarSelecao():
+	show()

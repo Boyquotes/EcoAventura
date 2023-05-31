@@ -10,6 +10,7 @@ onready var sprite = $AnimatedSprite
 onready var sound_jump = $Jump
 
 var animacaoFim = false
+var animacaoVoltar = false
 
 func _ready():
 	# Static types are necessary here to avoid warnings.
@@ -24,6 +25,7 @@ func _ready():
 		camera.custom_viewport = viewport
 		yield(get_tree(), "idle_frame")
 		camera.make_current()
+	$Timer.connect("timeout", self, "terminalVoltar")
 
 
 # Physics process is a built-in loop in Godot.
@@ -47,15 +49,18 @@ func _physics_process(_delta):
 	# Play jump sound
 	var direction: Vector2
 	var is_jump_interrupted = false
-	if (!animacaoFim):
+	if animacaoFim:
+		direction = Vector2(-1, 0)
+	elif animacaoVoltar:
+		direction = Vector2(1, 0)
+	else:
 		if Input.is_action_just_pressed("jump" + action_suffix) and is_on_floor():
 			sound_jump.play()
 
 		direction = get_direction()
 
 		is_jump_interrupted = Input.is_action_just_released("jump" + action_suffix) and _velocity.y < 0.0
-	else:
-		direction = Vector2(-1, 0)
+
 	_velocity = calculate_move_velocity(_velocity, direction, speed, is_jump_interrupted)
 
 	var snap_vector = Vector2.ZERO
@@ -107,3 +112,9 @@ func calculate_move_velocity(
 
 func terminarFase():
 	animacaoFim = true
+
+func voltar():
+	animacaoVoltar = true
+	$Timer.start()
+func terminalVoltar():
+	animacaoVoltar = false

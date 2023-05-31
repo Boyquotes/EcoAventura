@@ -6,7 +6,7 @@ var collectedCoin = 0
 # The "_" prefix is a convention to indicate that variables are private
 
 onready var uiLixo = $CanvasLayer/TipoLixo
-onready var caixaTexto = get_parent().get_node("Jogo/InterfaceLayer/Dialogo")
+onready var caixaTexto = get_parent().get_node("Jogo/InterfaceLayer/CaixaTexto")
 
 func _ready():
 	uiLixo.setLixo(1)
@@ -28,10 +28,14 @@ func _on_Fim_body_entered(body: Player):
 			trans.play_backwards("FadeIn")
 			trans.connect("animation_finished", self, "fimNivel")
 		else:
-			caixaTexto.mostrarTextos(["Teste 1 2 3 4"])
+			caixaTexto.mostrarTextos(["Eu preciso coletar todos os lixos antes de sair"])
+			caixaTexto.connect("textoCompletado", $Player, "voltar")
+
 func fimNivel(animation_name):
 	if animation_name == "FadeIn":
 		emit_signal("nivelAcabado")
 		trans.play("FadeIn")
 		uiLixo.queue_free()
 		queue_free()
+
+

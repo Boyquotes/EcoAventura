@@ -146,7 +146,8 @@ polygon = PoolVector2Array( -129.699, 9.94633, -47, -10.5, 8, -7, 10, -1.5, -46.
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 7 )]
 
-[node name="Music" type="AudioStreamPlayer" parent="ParallaxBackground"]
+[node name="Music" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
 stream = ExtResource( 2 )
 volume_db = -15.0
 pitch_scale = 0.9

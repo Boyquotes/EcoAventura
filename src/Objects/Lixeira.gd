@@ -10,7 +10,7 @@ enum TipoLixeira {
 	papel = 3,
 	organico = 4
 }
-export(TipoLixeira) var tipo_de_lixeira
+export(TipoLixeira) var tipo_de_lixeira = TipoLixeira.vidro
 
 onready var sprite = $TodasLixeiras
 
@@ -18,6 +18,11 @@ func _ready():
 	sprite.frame_coords = Vector2( 0, tipo_de_lixeira)
 
 
-func _on_Lixeira_body_entered(body):
+func _on_body_entered(body):
 	if body is Player:
+		sprite.frame_coords.x = 1
 		emit_signal("player_entrou", self)
+		
+func _on_body_exited(body):
+	if body is Player:
+		sprite.frame_coords.x = 0

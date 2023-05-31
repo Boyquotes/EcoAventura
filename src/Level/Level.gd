@@ -1,18 +1,12 @@
 class_name Level
-extends Node2D
-
-signal nivelAcabado
+extends LevelClass
 
 var collectedCoin = 0
 
-const LIMIT_LEFT = -315
-const LIMIT_TOP = -250
-const LIMIT_RIGHT = 955
-const LIMIT_BOTTOM = 690
 # The "_" prefix is a convention to indicate that variables are private
 
-onready var uiLixo = get_node("/root/Game/Jogo/InterfaceLayer/TipoLixo")
-onready var trans: AnimationPlayer = get_node("/root/Game/CanvasLayer/Transicoes/AnimationPlayer")
+onready var uiLixo = $CanvasLayer/TipoLixo
+onready var caixaTexto = get_parent().get_node("Jogo/InterfaceLayer/Dialogo")
 
 func _ready():
 	uiLixo.setLixo(1)
@@ -26,15 +20,18 @@ func _ready():
 
 
 func _on_Fim_body_entered(body: Player):
-	if collectedCoin >= 1:
-		$Fim/Barreira.queue_free()
-		body.terminarFase()
-		yield(get_tree().create_timer(1), "timeout")
-		trans.play_backwards("FadeIn")
-		trans.connect("animation_finished", self, "fimNivel")
-		
+	if body is Player:
+		if collectedCoin >= 1:
+			$Fim/Barreira.queue_free()
+			body.terminarFase()
+			yield(get_tree().create_timer(1), "timeout")
+			trans.play_backwards("FadeIn")
+			trans.connect("animation_finished", self, "fimNivel")
+		else:
+			caixaTexto.mostrarTextos(["Teste 1 2 3 4"])
 func fimNivel(animation_name):
 	if animation_name == "FadeIn":
 		emit_signal("nivelAcabado")
 		trans.play("FadeIn")
+		uiLixo.queue_free()
 		queue_free()

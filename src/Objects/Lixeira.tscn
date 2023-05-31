@@ -21,4 +21,5 @@ offset = Vector2( 0, -175 )
 hframes = 2
 vframes = 5
 
-[connection signal="body_entered" from="." to="." method="_on_Lixeira_body_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

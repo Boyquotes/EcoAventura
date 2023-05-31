@@ -1,13 +1,17 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/art/tileset/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://assets/audio/music/music.ogg" type="AudioStream" id=2]
 [ext_resource path="res://src/Platforms/Platform.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/Objects/Lixo.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/Objects/LixoColetavel.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/Level/Level.gd" type="Script" id=5]
 [ext_resource path="res://assets/art/platforms/moving_platform.png" type="Texture" id=6]
 [ext_resource path="res://src/Level/ParallaxBackground.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/Objects/Placa.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/Actors/Player.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/Main/TipoLixo.gd" type="Script" id=10]
+[ext_resource path="res://assets/art/ui/Reciclagem.png" type="Texture" id=11]
+[ext_resource path="res://assets/art/ui/NaoReciclagem.png" type="Texture" id=12]
 
 [sub_resource type="Animation" id=1]
 resource_name = "move"
@@ -149,11 +153,13 @@ pitch_scale = 0.9
 autoplay = true
 
 [node name="Player" parent="." instance=ExtResource( 9 )]
-position = Vector2( 117, 533 )
+position = Vector2( 117, 546 )
+
+[node name="Placa" parent="." instance=ExtResource( 8 )]
+position = Vector2( 65, 549 )
 
 [node name="Fim" type="Area2D" parent="."]
 position = Vector2( 36, 549 )
-space_override = 3
 
 [node name="TriggerFim" type="CollisionShape2D" parent="Fim"]
 position = Vector2( -26, -57 )
@@ -164,5 +170,33 @@ shape = SubResource( 3 )
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Fim/Barreira"]
 position = Vector2( -48, -57 )
 shape = SubResource( 3 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 90
+
+[node name="TipoLixo" type="Control" parent="CanvasLayer"]
+anchor_left = 0.87
+anchor_right = 1.0
+anchor_bottom = 0.208
+margin_left = -6.10352e-05
+margin_right = -4.0
+margin_bottom = 0.159996
+script = ExtResource( 10 )
+
+[node name="NaoReciclavel" type="TextureRect" parent="CanvasLayer/TipoLixo"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 7
+
+[node name="Reciclavel" type="TextureRect" parent="CanvasLayer/TipoLixo"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 11 )
+expand = true
+stretch_mode = 7
 
 [connection signal="body_entered" from="Fim" to="." method="_on_Fim_body_entered"]

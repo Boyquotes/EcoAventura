@@ -1,12 +1,10 @@
-extends Node2D
+extends LevelClass
 
-var collectedCoin = 0
-
-const LIMIT_LEFT = -315
-const LIMIT_TOP = -250
-const LIMIT_RIGHT = 2000
-const LIMIT_BOTTOM = 690
-
+func _init():
+	LIMIT_LEFT = 0
+	LIMIT_TOP = -250
+	LIMIT_RIGHT = 1000
+	LIMIT_BOTTOM = 690
 
 func _ready():
 	for child in get_children():

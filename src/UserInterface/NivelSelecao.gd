@@ -1,22 +1,12 @@
+class_name NivelSelecao
 extends Control
 
 export(String, FILE, "*.tscn") var nivel
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-var disponivel = false
-var completado = false
-export var selecionado = false setget selecionar
+export var numeroNivel: int = 1
 
 onready var _textura = $Botao
 
 onready var selecaoNivel = get_parent().get_parent()
-
-func selecionar(value):
-	selecionado = value
-	# _textura.texture.
 
 func select_nivel():
 	if not selecaoNivel.carregandoNivel:
@@ -33,6 +23,11 @@ func select_nivel():
 		selecaoNivel.carregandoNivel = false
 		return current_scene
 
+func atualizarNivel(nivelAtual: int):
+	if nivelAtual > numeroNivel:
+		_textura.set_texture(load("res://assets/art/ui/NivelCompletado.png"))
+	elif nivelAtual >= numeroNivel:
+		_textura.set_texture(load("res://assets/art/ui/NivelDesbloqueado.png"))
 
 func _on_FaseBotao_pressed():
 	select_nivel()

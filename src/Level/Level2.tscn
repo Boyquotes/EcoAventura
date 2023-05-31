@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/art/tileset/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://src/Level/Level2.gd" type="Script" id=2]
 [ext_resource path="res://src/Platforms/Platform.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/Actors/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/Objects/Lixeira.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/Objects/LixoUI.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/Level/ParallaxBackground.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Animation" id=2]
@@ -96,7 +97,7 @@ z_index = 0
 [node name="ParallaxBackground" parent="." instance=ExtResource( 7 )]
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 229, 215 )
+position = Vector2( 230, 227 )
 
 [node name="LixeiraVidro" parent="." instance=ExtResource( 5 )]
 position = Vector2( 274, 4 )
@@ -116,3 +117,17 @@ tipo_de_lixeira = 4
 [node name="LixeiraMetal" parent="." instance=ExtResource( 5 )]
 position = Vector2( 620, -29 )
 tipo_de_lixeira = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -3.0
+margin_top = 21.0
+margin_right = -3.0
+margin_bottom = 21.0
+
+[node name="Lixo" parent="CanvasLayer/Control" instance=ExtResource( 6 )]
+position = Vector2( 739, 63 )
+scale = Vector2( 5, 5 )

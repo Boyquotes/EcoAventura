@@ -10,6 +10,7 @@ mouse_default_cursor_shape = 2
 script = ExtResource( 1 )
 
 [node name="Botao" type="TextureRect" parent="."]
-margin_right = 146.0
-margin_bottom = 71.0
+anchor_right = 3.65
+anchor_bottom = 1.775
+rect_pivot_offset = Vector2( 73, 50 )
 texture = ExtResource( 3 )

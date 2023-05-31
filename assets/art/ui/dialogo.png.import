@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/touch_button_fire.png-8b72c42a8cb252207ce8948d4b623690.stex"
+path="res://.import/dialogo.png-be3dcb25eede1f7dc409a25f73bcca35.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/ui/touch_button_fire.png"
-dest_files=[ "res://.import/touch_button_fire.png-8b72c42a8cb252207ce8948d4b623690.stex" ]
+source_file="res://assets/art/ui/dialogo.png"
+dest_files=[ "res://.import/dialogo.png-be3dcb25eede1f7dc409a25f73bcca35.stex" ]
 
 [params]
 

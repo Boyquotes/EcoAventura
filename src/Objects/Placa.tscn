@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/theme/user_interface.tres" type="Theme" id=1]
+[ext_resource path="res://assets/theme/fonts/kenney_mini_square.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/art/placas/Placa2.png" type="Texture" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 72
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Placa2" type="Sprite" parent="."]
+scale = Vector2( 0.114325, 0.114325 )
+texture = ExtResource( 3 )
+offset = Vector2( 4, -208 )
+
+[node name="Label" type="Label" parent="Placa2"]
+anchor_left = 0.178
+anchor_top = 0.259
+anchor_right = 0.834
+anchor_bottom = 0.321
+margin_left = -212.154
+margin_top = -452.177
+margin_right = -184.114
+margin_bottom = -295.031
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Lixeiras
+"
+align = 1
+valign = 1

@@ -1,5 +1,8 @@
 extends LevelClass
 
+onready var iconeLixo = $CanvasLayer/Control/Lixo
+onready var caixaTexto = get_parent().get_node("Jogo/InterfaceLayer/CaixaTexto")
+
 func _init():
 	LIMIT_LEFT = 0
 	LIMIT_TOP = -250
@@ -18,14 +21,9 @@ func _ready():
 			var c: Lixeira = child
 			c.connect("player_entrou", self, "lixo_c")
 
-func lixo_c(lixeira: Lixeira):	
-	if lixeira.tipo_de_lixeira == Lixeira.TipoLixeira.plastico:
-		print("plastico")
-	elif lixeira.tipo_de_lixeira == Lixeira.TipoLixeira.metal:
-		print("metal")
-	elif lixeira.tipo_de_lixeira == Lixeira.TipoLixeira.vidro:
-		print("vidro")
-	elif lixeira.tipo_de_lixeira == Lixeira.TipoLixeira.organico:
-		print("organico")
-	elif lixeira.tipo_de_lixeira == Lixeira.TipoLixeira.papel:
-		print("papel")
+func lixo_c(lixeira: Lixeira):
+	if lixeira.tipo_de_lixeira == iconeLixo.lixoAtual.y:
+		iconeLixo.proximoLixo()
+	else:
+		caixaTexto.mostrarTextos(["Lixeira errada"])
+		# caixaTexto.connect("textoCompletado", $Player, "voltar")

@@ -25,7 +25,6 @@ func _input(event):
 func _on_Timer_timeout():
 	$SfxFala.play()
 	caixaTexto.visible_characters += 1
-	print(caixaTexto.visible_characters)
 	if caixaTexto.get_visible_characters() >= limiteChars:
 		timer.stop()
 

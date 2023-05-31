@@ -65,47 +65,43 @@ tile_data = PoolIntArray( -65546, 536870913, 0, -65545, 1, 0, -131044, 536870913
 
 [node name="latinha" parent="Lixos" instance=ExtResource( 4 )]
 position = Vector2( 371, 539 )
-tipoLixeira = 2
+tipoDeLixeira = 2
 textura = 3
-teste = 0
 
 [node name="banana" parent="Lixos" instance=ExtResource( 4 )]
 position = Vector2( 492, 525 )
-tipoLixeira = 4
-textura = 1
+tipoDeLixeira = 4
+textura = 10
 
 [node name="peixe" parent="Lixos" instance=ExtResource( 4 )]
 position = Vector2( 535, 609 )
-tipoLixeira = 4
-textura = 2
+tipoDeLixeira = 4
+textura = 11
 
 [node name="sacola" parent="Lixos" instance=ExtResource( 4 )]
 position = Vector2( 594, 444 )
-tipoLixeira = 1
+tipoDeLixeira = 1
 textura = 4
-teste = 0
 
 [node name="maca" parent="Lixos" instance=ExtResource( 4 )]
 position = Vector2( 811, 331 )
-tipoLixeira = 4
-textura = 3
+tipoDeLixeira = 4
+textura = 13
 
 [node name="melancia" parent="Lixos" instance=ExtResource( 4 )]
 position = Vector2( 477, 255 )
-tipoLixeira = 4
-textura = 4
+tipoDeLixeira = 4
+textura = 14
 
 [node name="garrafa" parent="Lixos" instance=ExtResource( 4 )]
 position = Vector2( 413, 186 )
-tipoLixeira = 1
+tipoDeLixeira = 1
 textura = 1
-teste = 0
 
 [node name="telinha" parent="Lixos" instance=ExtResource( 4 )]
 position = Vector2( 286, 237 )
-tipoLixeira = 1
+tipoDeLixeira = 1
 textura = 6
-teste = 0
 
 [node name="Platforms" type="Node" parent="."]
 

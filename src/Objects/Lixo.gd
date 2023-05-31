@@ -2,7 +2,6 @@ extends Area2D
 class_name Lixo
 
 onready var lixos: Sprite = $lixos
-enum tipoLixo { reciclavel, organico }
 
 enum TipoLixeira {
 	vidro = 0,
@@ -12,11 +11,21 @@ enum TipoLixeira {
 	organico = 4
 }
 
-export(TipoLixeira) var tipoLixeira
-export(int, 0, 15) var textura
-export(tipoLixo) var teste = tipoLixo.organico
+export(TipoLixeira) var tipoDeLixeira setget setTipoDeLixeira
+export(int, 0, 15) var textura setget setTextura
+
+func setTextura(id: int):
+	if lixos:
+		lixos.frame_coords.x = id
+	textura = id
+	
+func setTipoDeLixeira(id: int):
+	if lixos:
+		lixos.frame_coords.y = id
+	tipoDeLixeira = id
 
 func _ready():
-	lixos.frame_coords = Vector2( tipoLixeira, textura )
+	lixos.frame_coords = Vector2( tipoDeLixeira, textura )
+
 
 	

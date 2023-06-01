@@ -11,18 +11,8 @@ enum TipoLixeira {
 	organico = 4
 }
 
-export(TipoLixeira) var tipoDeLixeira setget setTipoDeLixeira
-export(int, 0, 15) var textura setget setTextura
-
-func setTextura(id: int):
-	if lixos:
-		lixos.frame_coords.x = id
-	textura = id
-	
-func setTipoDeLixeira(id: int):
-	if lixos:
-		lixos.frame_coords.y = id
-	tipoDeLixeira = id
+export(TipoLixeira) var tipoDeLixeira
+export(int, 0, 20) var textura
 
 func _ready():
 	lixos.frame_coords = Vector2( tipoDeLixeira, textura )

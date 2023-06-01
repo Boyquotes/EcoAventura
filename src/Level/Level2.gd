@@ -22,7 +22,7 @@ func _ready():
 			c.connect("player_entrou", self, "lixo_c")
 
 func lixo_c(lixeira: Lixeira):
-	if lixeira.tipo_de_lixeira == iconeLixo.lixoAtual.y:
+	if lixeira.tipo_de_lixeira == iconeLixo.tipoDeLixeira:
 		iconeLixo.proximoLixo()
 	else:
 		caixaTexto.mostrarTextos(["Lixeira errada"])

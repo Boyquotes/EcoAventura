@@ -10,7 +10,8 @@ enum TipoLixeira {
 	papel = 3,
 	organico = 4
 }
-export(TipoLixeira) var tipo_de_lixeira = TipoLixeira.vidro
+
+export(TipoLixeira) var tipo_de_lixeira
 
 onready var sprite = $TodasLixeiras
 

@@ -5,6 +5,7 @@ signal textoCompletado()
 
 onready var caixaTexto = $TextureRect/Label
 onready var timer = $Timer
+onready var triangulo = $TextureRect/Label/Triangulo
 
 var limiteChars = 0
 var fila: Array = []
@@ -26,12 +27,14 @@ func _on_Timer_timeout():
 	$SfxFala.play()
 	caixaTexto.visible_characters += 1
 	if caixaTexto.get_visible_characters() >= limiteChars:
+		triangulo.show()
 		timer.stop()
 
 func proximoTexto():
 	if caixaTexto.get_visible_characters() < limiteChars:
 		caixaTexto.visible_characters = limiteChars
 	elif fila.size() > 0:
+		triangulo.hide()
 		textoAtual = fila.pop_front()
 		caixaTexto.set_visible_characters(0)
 		caixaTexto.set_text(textoAtual)

@@ -4,8 +4,8 @@ var titulo = true
 
 func _input(event):
 	if titulo and event.is_pressed():
-		var jogo = ResourceLoader.load("res://src/Main/Jogo.tscn")
-		var jogoInstance = jogo.instance()
-		get_parent().add_child(jogoInstance)
+		var interface = ResourceLoader.load("res://src/Main/Interface.tscn")
+		var interfaceInstance = interface.instance()
+		get_parent().add_child(interfaceInstance)
 		hide()
 		titulo = false

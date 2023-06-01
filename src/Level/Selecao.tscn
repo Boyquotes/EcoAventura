@@ -7,24 +7,6 @@
 [ext_resource path="res://assets/art/player/caminhando2.png" type="Texture" id=5]
 [ext_resource path="res://assets/art/player/caminhando1.png" type="Texture" id=6]
 
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [ ExtResource( 6 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 4 ) ],
-"loop": true,
-"name": "caminhar",
-"speed": 8.0
-}, {
-"frames": [ ExtResource( 4 ) ],
-"loop": true,
-"name": "default",
-"speed": 0.0
-}, {
-"frames": [ ExtResource( 5 ) ],
-"loop": true,
-"name": "pular",
-"speed": 0.0
-} ]
-
 [sub_resource type="Animation" id=2]
 resource_name = "Pular"
 tracks/0/type = "value"
@@ -40,24 +22,14 @@ tracks/0/keys = {
 "values": [ "pular" ]
 }
 tracks/1/type = "bezier"
-tracks/1/path = NodePath(".:position:x")
+tracks/1/path = NodePath(".:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"points": PoolRealArray( 401, -0.25, 0, 0.25, 0, 399, 0, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 1 )
-}
-tracks/2/type = "bezier"
-tracks/2/path = NodePath(".:position:y")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"points": PoolRealArray( 347.663, -0.25, 0, 0.1, -59.4407, 295.653, 0, 0.5, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.7 )
+"points": PoolRealArray( 0, -0.25, 0, 0.1, -75.4445, -51.1389, 0, 0.5, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
 }
 
 [sub_resource type="Animation" id=3]
@@ -81,7 +53,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"points": PoolRealArray( 401, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
 tracks/2/type = "bezier"
@@ -91,9 +63,27 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"points": PoolRealArray( 353, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "caminhar",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "pular",
+"speed": 0.0
+} ]
 
 [node name="SelecaoNivel" type="Control"]
 anchor_right = 1.0
@@ -117,16 +107,31 @@ margin_left = 340.0
 margin_top = 385.0
 margin_right = -314.0
 margin_bottom = -24.0
+rect_pivot_offset = Vector2( 73, 50 )
 nivel = "res://src/Level/Level.tscn"
-selecionado = true
 
-[node name="Zeca" type="AnimatedSprite" parent="Fundo1"]
-position = Vector2( 401, 353 )
-scale = Vector2( 0.2, 0.2 )
-frames = SubResource( 1 )
+[node name="Fase2" parent="Fundo1" instance=ExtResource( 1 )]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 240.0
+margin_top = 275.0
+margin_right = -414.0
+margin_bottom = -134.0
+rect_pivot_offset = Vector2( 73, 45 )
+nivel = "res://src/Level/Level2.tscn"
+numeroNivel = 2
+
+[node name="Zeca" type="Node2D" parent="Fundo1"]
+position = Vector2( 410, 417 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Fundo1/Zeca"]
+root_node = NodePath("../sprite")
 anims/Pular = SubResource( 2 )
 anims/RESET = SubResource( 3 )
+
+[node name="sprite" type="AnimatedSprite" parent="Fundo1/Zeca"]
+scale = Vector2( 0.2, 0.2 )
+frames = SubResource( 1 )
+offset = Vector2( 0.00012207, -390 )
 
 [connection signal="animation_finished" from="Fundo1/Zeca/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

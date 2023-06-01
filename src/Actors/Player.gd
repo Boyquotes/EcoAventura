@@ -8,22 +8,20 @@ export(String) var action_suffix = ""
 onready var platform_detector = $PlatformDetector
 onready var sprite = $AnimatedSprite
 onready var sound_jump = $Jump
+onready var timer = $Timer
 
 var animacaoFim = false
+var animacaoVoltar = false
+var animacaoInicio = false
 
 func _ready():
 	# Static types are necessary here to avoid warnings.
 	var camera: Camera2D = $Camera
-	if action_suffix == "_p1":
-		camera.custom_viewport = $"../.."
-		yield(get_tree(), "idle_frame")
-		camera.make_current()
-	elif action_suffix == "_p2":
-		var viewport: Viewport = $"../../../../ViewportContainer2/Viewport2"
-		viewport.world_2d = ($"../.." as Viewport).world_2d
-		camera.custom_viewport = viewport
-		yield(get_tree(), "idle_frame")
-		camera.make_current()
+	camera.custom_viewport = $"../.."
+	yield(get_tree(), "idle_frame")
+	camera.make_current()
+	timer.connect("timeout", self, "terminarAnimacao")
+	inicio()
 
 
 # Physics process is a built-in loop in Godot.
@@ -47,15 +45,18 @@ func _physics_process(_delta):
 	# Play jump sound
 	var direction: Vector2
 	var is_jump_interrupted = false
-	if (!animacaoFim):
+	if animacaoFim:
+		direction = Vector2(-1, 0)
+	elif animacaoVoltar or animacaoInicio:
+		direction = Vector2(1, 0)
+	else:
 		if Input.is_action_just_pressed("jump" + action_suffix) and is_on_floor():
 			sound_jump.play()
 
 		direction = get_direction()
 
 		is_jump_interrupted = Input.is_action_just_released("jump" + action_suffix) and _velocity.y < 0.0
-	else:
-		direction = Vector2(-1, 0)
+
 	_velocity = calculate_move_velocity(_velocity, direction, speed, is_jump_interrupted)
 
 	var snap_vector = Vector2.ZERO
@@ -107,3 +108,20 @@ func calculate_move_velocity(
 
 func terminarFase():
 	animacaoFim = true
+
+func voltar():
+	animacaoVoltar = true
+	timer.start(0.2)
+
+func inicio():
+	animacaoInicio = true
+	timer.start(1.5)
+	collision_mask = collision_mask - (collision_mask & 0b100000)
+	
+func terminarAnimacao():
+	if animacaoInicio:
+		collision_mask = collision_mask ^ 0b100000
+	animacaoVoltar = false
+	animacaoInicio = false
+	animacaoFim = false
+

@@ -1,13 +1,13 @@
 extends Control
 
-
 export(Vector2) var _start_position = Vector2(0, -20)
 export(Vector2) var _end_position = Vector2.ZERO
 export(float) var fade_in_duration = 0.3
 export(float) var fade_out_duration = 0.2
 
 onready var center_cont = $ColorRect/CenterContainer
-onready var resume_button = center_cont.get_node(@"VBoxContainer/ResumeButton")
+onready var resume_button = center_cont.get_node("VBoxContainer/ResumeButton")
+onready var quit_button = center_cont.get_node("VBoxContainer/QuitButton")
 
 onready var root = get_tree().get_root()
 onready var scene_root = root.get_child(root.get_child_count() - 1)
@@ -16,7 +16,6 @@ onready var tween = $Tween
 
 func _ready():
 	hide()
-
 
 func close():
 	get_tree().paused = false
@@ -32,6 +31,10 @@ func close():
 
 
 func open():
+	if get_node_or_null("/root/Game/Level") is LevelClass:
+		quit_button.text = "Voltar"
+	else:
+		quit_button.text = "Sair"
 	show()
 	resume_button.grab_focus()
 
@@ -49,8 +52,13 @@ func _on_ResumeButton_pressed():
 
 
 func _on_QuitButton_pressed():
-	scene_root.notification(NOTIFICATION_WM_QUIT_REQUEST)
-	get_tree().quit()
+	var nivel = get_node_or_null("/root/Game/Level")
+	if nivel is LevelClass:
+		(nivel as LevelClass).fimNivel()
+		close()
+	else:
+		scene_root.notification(NOTIFICATION_WM_QUIT_REQUEST)
+		get_tree().quit()
 
 
 func _on_Tween_all_completed():

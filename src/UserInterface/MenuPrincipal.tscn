@@ -67,6 +67,18 @@ tracks/5/keys = {
 "points": PoolRealArray( 1.4, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("..:rect_size")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 800, 480 ) ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "Sair"
@@ -152,8 +164,6 @@ stretch_mode = 7
 [node name="Titulo" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 800.0
-margin_bottom = 480.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Titulo"]
 root_node = NodePath("../TextureRect")
@@ -163,11 +173,10 @@ anims/Sair = SubResource( 3 )
 anims/ZoomInOut = SubResource( 2 )
 
 [node name="TextureRect" type="TextureRect" parent="Titulo"]
-anchor_top = -0.081
 anchor_right = 1.0
-anchor_bottom = 0.919
-margin_top = -0.119999
-margin_bottom = -0.120026
+anchor_bottom = 1.0
+margin_top = -32.0
+margin_bottom = -32.0
 rect_pivot_offset = Vector2( 400, 240 )
 size_flags_horizontal = 3
 size_flags_vertical = 3

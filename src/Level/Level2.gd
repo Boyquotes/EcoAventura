@@ -11,6 +11,7 @@ func _init():
 
 func _ready():
 	._ready()
+	textoTentarSairCedo = ["Ainda tem lixo para ser separado"]
 	for child in get_children():
 		if child is Lixeira:
 			var c: Lixeira = child
@@ -21,5 +22,13 @@ func lixo_c(lixeira: Lixeira):
 		nivelCompletado = iconeLixo.proximoLixo()
 		sfxCerto.play()
 	else:
-		caixaTexto.mostrarTextos(["Lixeira errada"])
-		# caixaTexto.connect("textoCompletado", $Player, "voltar")
+		if iconeLixo.tipoDeLixeira == Lixo.TipoLixeira.organico:
+				caixaTexto.mostrarTextos(["Esse lixo é organico, e vai na lixeira marrom"])
+		elif iconeLixo.tipoDeLixeira == Lixo.TipoLixeira.plastico:
+				caixaTexto.mostrarTextos(["Esse lixo é plastico, e vai na lixeira vermelha"])
+		elif iconeLixo.tipoDeLixeira == Lixo.TipoLixeira.vidro:
+				caixaTexto.mostrarTextos(["Esse lixo é vidro, e vai na lixeira verde"])
+		elif iconeLixo.tipoDeLixeira == Lixo.TipoLixeira.papel:
+				caixaTexto.mostrarTextos(["Esse lixo é papel, e vai na lixeira azul"])
+		elif iconeLixo.tipoDeLixeira == Lixo.TipoLixeira.metal:
+				caixaTexto.mostrarTextos(["Esse lixo é metal, e vai na lixeira amarela"])

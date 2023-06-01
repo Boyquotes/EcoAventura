@@ -123,6 +123,5 @@ scale = Vector2( 0.140625, 0.140625 )
 texture = ExtResource( 1 )
 hframes = 5
 vframes = 15
-frame = 17
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

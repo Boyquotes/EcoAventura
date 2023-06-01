@@ -19,10 +19,12 @@ func _ready():
 			camera.limit_top = LIMIT_TOP
 			camera.limit_right = LIMIT_RIGHT
 			camera.limit_bottom = LIMIT_BOTTOM
-
 	uiLixo.setLixo(1)
 	textoTentarSairCedo = ["Eu preciso coletar todo lixo antes ir para as lixeiras"]
 	._ready()
 
-
-
+func _on_Player_animacaoTerminada(nome):
+	if nome == "animacaoInicio":
+		caixaTexto.mostrarTextos([
+			""
+		])

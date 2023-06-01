@@ -2,9 +2,11 @@ extends Control
 
 var titulo = true
 
+var cena1 = "res://src/Level/historia-cena1.tscn"
+
 func _input(event):
 	if titulo and event.is_pressed():
-		var interface = ResourceLoader.load("res://src/Main/Interface.tscn")
+		var interface = ResourceLoader.load(cena1)
 		var interfaceInstance = interface.instance()
 		get_parent().add_child(interfaceInstance)
 		hide()

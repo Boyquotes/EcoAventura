@@ -1,6 +1,8 @@
 class_name Player
 extends Actor
 
+signal animacaoTerminada(nome)
+
 const FLOOR_DETECT_DISTANCE = 20.0
 
 export(String) var action_suffix = ""
@@ -117,10 +119,15 @@ func inicio():
 	animacaoInicio = true
 	timer.start(1.5)
 	collision_mask = collision_mask - (collision_mask & 0b100000)
-	
+
 func terminarAnimacao():
 	if animacaoInicio:
 		collision_mask = collision_mask ^ 0b100000
+		emit_signal("animacaoTerminada", "animacaoInicio")
+	if animacaoVoltar:
+		emit_signal("animacaoTerminada", "animacaoVoltar")
+	if animacaoFim:
+		emit_signal("animacaoTerminada", "animacaoFim")
 	animacaoVoltar = false
 	animacaoInicio = false
 	animacaoFim = false

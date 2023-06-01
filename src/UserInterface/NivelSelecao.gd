@@ -1,5 +1,5 @@
 class_name NivelSelecao
-extends Control
+extends BaseButton
 
 export(String, FILE, "*.tscn") var nivel
 export var numeroNivel: int = 1
@@ -29,7 +29,4 @@ func atualizarNivel(nivelAtual: int):
 		_textura.set_texture(load("res://assets/art/ui/NivelCompletado.png"))
 	elif nivelAtual >= numeroNivel:
 		_textura.set_texture(load("res://assets/art/ui/NivelDesbloqueado.png"))
-
-func _on_FaseBotao_pressed():
-	select_nivel()
 

@@ -3,14 +3,21 @@
 [ext_resource path="res://src/UserInterface/NivelSelecao.gd" type="Script" id=1]
 [ext_resource path="res://assets/art/ui/NivelBloqueado.png" type="Texture" id=3]
 
-[node name="Control" type="Control"]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="Control" type="Button"]
+anchor_right = 0.182
+anchor_bottom = 0.148
+margin_right = 0.399994
+margin_bottom = -0.0400009
+rect_pivot_offset = Vector2( 73, 53 )
 mouse_default_cursor_shape = 2
+shortcut_in_tooltip = false
+flat = true
+expand_icon = true
 script = ExtResource( 1 )
 
 [node name="Botao" type="TextureRect" parent="."]
-anchor_right = 3.65
-anchor_bottom = 1.775
+anchor_right = 1.0
+anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 73, 50 )
 texture = ExtResource( 3 )
+expand = true

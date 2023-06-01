@@ -20,7 +20,7 @@ func mostrarTextos(textoArr: Array):
 	proximoTexto()
 
 func _input(event):
-	if event.is_action_pressed("ui_accept") and visible:
+	if (event.is_action_pressed("ui_accept") or (event is InputEventMouse and event.is_pressed())) and visible:
 		proximoTexto()
 
 func _on_Timer_timeout():

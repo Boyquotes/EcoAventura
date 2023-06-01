@@ -3,7 +3,7 @@
 [ext_resource path="res://src/Main/Interface.gd" type="Script" id=1]
 [ext_resource path="res://src/UserInterface/CaixaTexto.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/UserInterface/PauseMenu.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/Level/Selecao.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/UserInterface/Selecao.tscn" type="PackedScene" id=4]
 
 [node name="Interface" type="CanvasLayer"]
 layer = 99

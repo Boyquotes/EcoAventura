@@ -19,8 +19,12 @@ func _ready():
 
 func lixo_c(lixeira: Lixeira):
 	if lixeira.tipo_de_lixeira == iconeLixo.tipoDeLixeira:
-		nivelCompletado = iconeLixo.proximoLixo()
 		sfxCerto.play()
+		nivelCompletado = iconeLixo.proximoLixo()
+		if nivelCompletado:
+			caixaTexto.mostrarTextos([
+				"Isso ai!, conseguimos separar todos os lixos",
+			])
 	else:
 		if iconeLixo.tipoDeLixeira == Lixo.TipoLixeira.organico:
 				caixaTexto.mostrarTextos(["Esse lixo é organico, e vai na lixeira marrom"])
@@ -43,6 +47,5 @@ func _on_Player_animacaoTerminada(nome):
 Verde vai os vidros
 Azul vai os papéis
 Amarelo os metais
-E Marrom os lixos orgânicos
-			"""
+E Marrom os lixos orgânicos"""
 		])

@@ -2,7 +2,7 @@ extends Control
 
 var carregandoNivel = false
 var nivelSelecionado = false
-var nivelAtual = 2
+var nivelAtual = 1
 var nivelMaximo = 2
 
 onready var player = $Fundo1/Zeca/AnimationPlayer
@@ -46,8 +46,8 @@ func voltarSelecao(completado: bool):
 	if completado:
 		if proximoNivel == nivelMaximo:
 			get_tree().change_scene("res://src/FimDemo.tscn")
-		if proximoNivel >= nivelAtual:
-			nivelAtual = nivelAtual + 1
+		elif proximoNivel >= nivelAtual:
+			nivelAtual += 1
 			if proximoNivel < nivelMaximo:
 				proximoNivel += 1
 	setZecaPosition()

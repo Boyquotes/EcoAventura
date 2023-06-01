@@ -16,7 +16,7 @@ var listaLixos: Array = [
 	Vector2(TipoLixeira.plastico, 1),
 	Vector2(TipoLixeira.papel, 1),
 	Vector2(TipoLixeira.organico, 1),
-	Vector2(TipoLixeira.vidro, 2),
+	Vector2(TipoLixeira.vidro, 3),
 ]
 
 func _ready():

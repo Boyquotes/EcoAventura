@@ -6,7 +6,7 @@ var nivelAtual = 1
 
 onready var player = $Fundo1/Zeca/AnimationPlayer
 onready var trans: AnimationPlayer = get_node("/root/Game/CanvasLayer/Transicoes/AnimationPlayer")
-onready var proximoNivel: int = 2
+onready var proximoNivel: int = 1
 
 func _ready():
 	setZecaPosition()

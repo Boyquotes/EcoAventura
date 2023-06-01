@@ -1,5 +1,6 @@
 extends LevelClass
 
+onready var sfxCerto = $Certo
 onready var iconeLixo = $CanvasLayer/Control/Lixo
 
 func _init():
@@ -18,6 +19,7 @@ func _ready():
 func lixo_c(lixeira: Lixeira):
 	if lixeira.tipo_de_lixeira == iconeLixo.tipoDeLixeira:
 		nivelCompletado = iconeLixo.proximoLixo()
+		sfxCerto.play()
 	else:
 		caixaTexto.mostrarTextos(["Lixeira errada"])
 		# caixaTexto.connect("textoCompletado", $Player, "voltar")

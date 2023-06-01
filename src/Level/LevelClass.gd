@@ -22,10 +22,10 @@ func _on_Fim_body_entered(body: Player):
 			body.terminarFase()
 			yield(get_tree().create_timer(1), "timeout")
 			trans.play_backwards("FadeIn")
-			trans.connect("animation_finished", self, "fimNivel")
+			trans.connect("animation_finished", self, "_on_animation_finished")
 		else:
 			caixaTexto.mostrarTextos(textoTentarSairCedo)
-			caixaTexto.connect("textoCompletado", $Player, "voltar")
+			caixaTexto.connect("textoCompletado", self, "playerVoltar")
 
 func _ready():
 	trans.play("FadeIn")
@@ -37,9 +37,15 @@ func _ready():
 			camera.limit_right = LIMIT_RIGHT
 			camera.limit_bottom = LIMIT_BOTTOM
 
-func fimNivel(animation_name):
-	if animation_name == "FadeIn":
-		emit_signal("nivelAcabado")
-		trans.play("FadeIn")
-		queue_free()
+func _on_animation_finished(anim):
+	if anim == "FadeIn":
+		fimNivel()
 
+func fimNivel():
+	emit_signal("nivelAcabado")
+	trans.play("FadeIn")
+	queue_free()
+
+func playerVoltar():
+	($Player as Player).voltar()
+	caixaTexto.disconnect("textoCompletado", self, "playerVoltar")

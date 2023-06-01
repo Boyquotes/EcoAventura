@@ -15,7 +15,7 @@ var rodandoTexto = false
 func mostrarTextos(textoArr: Array):
 	show()
 	get_tree().paused = true
-	fila = textoArr
+	fila = textoArr.duplicate()
 	limiteChars = 0
 	proximoTexto()
 

@@ -64,7 +64,10 @@ _global_script_class_icons={
 
 config/name="EcoAventura"
 run/main_scene="res://src/Main/Game.tscn"
+boot_splash/show_image=false
+boot_splash/image="res://assets/fundos/splash.png"
 config/icon="res://icon.png"
+config/windows_native_icon="res://icon.ico"
 target_fps="60"
 
 [debug]
@@ -84,11 +87,6 @@ window/stretch/mode="2d"
 window/stretch/aspect="keep"
 stretch/aspect="keep_height"
 stretch/mode="2d"
-
-[editor]
-
-version_control_autoload_on_startup=true
-version_control_plugin_name="GitAPI"
 
 [gdnative]
 
@@ -218,6 +216,7 @@ quality/driver/driver_name="GLES2"
 quality/intended_usage/framebuffer_allocation=0
 quality/intended_usage/framebuffer_allocation.mobile=1
 2d/snapping/use_gpu_pixel_snap=true
+vram_compression/import_etc=true
 quality/filters/use_nearest_mipmap_filter=true
 quality/filters/msaa=3
 quality/filters/use_fxaa=true

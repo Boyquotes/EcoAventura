@@ -12,6 +12,7 @@ onready var uiLixo = $CanvasLayer/TipoLixo
 
 func _ready():
 	uiLixo.setLixo(1)
+	textoTentarSairCedo = ["Eu preciso coletar todo lixo antes ir para as lixeiras"]
 	._ready()
 
 

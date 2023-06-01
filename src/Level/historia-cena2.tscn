@@ -1,35 +1,56 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://assets/fundos/fundo1-historia.png" type="Texture" id=1]
-[ext_resource path="res://assets/art/textos/texto-1.png" type="Texture" id=2]
-[ext_resource path="res://src/Level/historia-cena1.gd" type="Script" id=3]
+[ext_resource path="res://assets/fundos/fundo2-historia.png" type="Texture" id=1]
+[ext_resource path="res://assets/art/player/parado.png" type="Texture" id=2]
+[ext_resource path="res://assets/art/textos/texto-2.png" type="Texture" id=3]
 [ext_resource path="res://assets/art/textos/enter.png" type="Texture" id=4]
+[ext_resource path="res://src/Level/historia-cena2.gd" type="Script" id=5]
 
-[sub_resource type="Animation" id=2]
-resource_name = "Nova Animação"
-length = 0.4
+[sub_resource type="Animation" id=1]
+resource_name = "patovindo"
+length = 10.0
 tracks/0/type = "bezier"
-tracks/0/path = NodePath(".:position:x")
+tracks/0/path = NodePath(".:scale:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray(  ),
-"times": PoolRealArray(  )
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0.389482, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.1, 0.5 )
 }
 tracks/1/type = "bezier"
-tracks/1/path = NodePath(".:position:y")
+tracks/1/path = NodePath(".:scale:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"points": PoolRealArray( 596, -0.25, 0, 0.25, 0, 380, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0.1, 0.4 )
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0.389482, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.1, 0.5 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("../dialogo:scale:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0.45, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.6, 1 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("../dialogo:scale:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0.45, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.6, 1 )
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "enter"
 length = 5.0
 tracks/0/type = "bezier"
@@ -73,7 +94,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 2.5, 2.8 )
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "Nova Animação"
 length = 0.6
 loop = true
@@ -101,33 +122,39 @@ tracks/1/keys = {
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 3 )
+script = ExtResource( 5 )
 
-[node name="TextureRect" type="TextureRect" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="fundo" type="TextureRect" parent="."]
+margin_right = 800.0
+margin_bottom = 480.0
 texture = ExtResource( 1 )
 expand = true
 
-[node name="text1" type="Sprite" parent="."]
-position = Vector2( 604, 596 )
-scale = Vector2( 0.288889, 0.288889 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../zeca")
+autoplay = "patovindo"
+anims/patovindo = SubResource( 1 )
+
+[node name="zeca" type="Sprite" parent="."]
+position = Vector2( 677, 375 )
+scale = Vector2( 0.389482, 0.389482 )
 texture = ExtResource( 2 )
 
-[node name="texto1-entrada" type="AnimationPlayer" parent="text1"]
-autoplay = "Nova Animação"
-"anims/Nova Animação" = SubResource( 2 )
+[node name="dialogo" type="Sprite" parent="."]
+position = Vector2( 524, 167 )
+scale = Vector2( 0.45, 0.45 )
+texture = ExtResource( 3 )
 
 [node name="press-enter" type="Sprite" parent="."]
 position = Vector2( -70, 441 )
-scale = Vector2( 0.1, 0.1 )
+scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="press-enter"]
 root_node = NodePath("../..")
 autoplay = "enter"
-anims/enter = SubResource( 3 )
+anims/enter = SubResource( 2 )
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="press-enter"]
 autoplay = "Nova Animação"
-"anims/Nova Animação" = SubResource( 4 )
+"anims/Nova Animação" = SubResource( 3 )

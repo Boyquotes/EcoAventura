@@ -15,7 +15,7 @@ onready var uiLixo = get_node("/root/Game/Jogo/InterfaceLayer/TipoLixo")
 onready var trans: AnimationPlayer = get_node("/root/Game/CanvasLayer/Transicoes/AnimationPlayer")
 
 func _ready():
-	uiLixo.setLixo(1)
+	#uiLixo.setLixo(1)
 	for child in get_children():
 		if child is Player:
 			var camera = child.get_node("Camera")

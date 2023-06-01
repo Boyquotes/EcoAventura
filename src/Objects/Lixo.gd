@@ -15,7 +15,8 @@ export(TipoLixeira) var tipoDeLixeira
 export(int, 0, 20) var textura
 
 func _process(_delta):
-	lixos.frame_coords = Vector2( tipoDeLixeira, textura )
+	if lixos != null:
+		lixos.frame_coords = Vector2( tipoDeLixeira, textura )
 
 
 	

@@ -1,7 +1,7 @@
 class_name LevelClass
 extends Node2D
 
-signal nivelAcabado
+signal nivelAcabado(completado)
 
 var nivelCompletado = false
 var textoTentarSairCedo = ["Eu preciso completar o objectivo"]
@@ -28,6 +28,7 @@ func _on_Fim_body_entered(body: Player):
 			caixaTexto.connect("textoCompletado", self, "playerVoltar")
 
 func _ready():
+	name = "Level"
 	trans.play("FadeIn")
 	for child in get_children():
 		if child is Player:
@@ -42,7 +43,7 @@ func _on_animation_finished(anim):
 		fimNivel()
 
 func fimNivel():
-	emit_signal("nivelAcabado")
+	emit_signal("nivelAcabado", nivelCompletado)
 	trans.play("FadeIn")
 	queue_free()
 

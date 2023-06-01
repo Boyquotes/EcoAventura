@@ -32,3 +32,17 @@ func lixo_c(lixeira: Lixeira):
 				caixaTexto.mostrarTextos(["Esse lixo é papel, e vai na lixeira azul"])
 		elif iconeLixo.tipoDeLixeira == Lixo.TipoLixeira.metal:
 				caixaTexto.mostrarTextos(["Esse lixo é metal, e vai na lixeira amarela"])
+
+
+func _on_Player_animacaoTerminada(nome):
+	if nome == "animacaoInicio":
+		caixaTexto.mostrarTextos([
+			"Agora eu presciso separar os lixos nas lixeiras corretas",
+			"É bom lembrar qual tipo de lixo vai em cada cor",
+			"""Vermelho vai os plasticos
+Verde vai os vidros
+Azul vai os papéis
+Amarelo os metais
+E Marrom os lixos orgânicos
+			"""
+		])

@@ -56,6 +56,7 @@ volume_db = -20.0
 
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 0
+visible = false
 
 [node name="Left" type="TouchScreenButton" parent="UI"]
 position = Vector2( 27.7593, 360.87 )

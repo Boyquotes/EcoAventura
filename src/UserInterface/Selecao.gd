@@ -3,6 +3,7 @@ extends Control
 var carregandoNivel = false
 var nivelSelecionado = false
 var nivelAtual = 2
+var nivelMaximo = 2
 
 onready var player = $Fundo1/Zeca/AnimationPlayer
 onready var trans: AnimationPlayer = get_node("/root/Game/CanvasLayer/Transicoes/AnimationPlayer")
@@ -38,14 +39,17 @@ func _on_AnimationPlayer_animation_finished(anim):
 		nivel.connect("nivelAcabado", self, "voltarSelecao")
 		hide()
 
-func voltarSelecao():
+func voltarSelecao(completado: bool):
 	player.play("RESET")
 	trans.play("FadeIn")
-	if proximoNivel == 2:
-		get_tree().change_scene("res://src/FimDemo.tscn")
 	nivelSelecionado = false
-	if proximoNivel >= nivelAtual:
-		nivelAtual = nivelAtual + 1
+	if completado:
+		if proximoNivel == nivelMaximo:
+			get_tree().change_scene("res://src/FimDemo.tscn")
+		if proximoNivel >= nivelAtual:
+			nivelAtual = nivelAtual + 1
+			if proximoNivel < nivelMaximo:
+				proximoNivel += 1
 	setZecaPosition()
 	for child in $Fundo1.get_children():
 		if child is NivelSelecao:

@@ -150,19 +150,23 @@ pitch_scale = 0.9
 autoplay = true
 
 [node name="Player" parent="." instance=ExtResource( 9 )]
-position = Vector2( 117, 546 )
+position = Vector2( -142, 543 )
 
 [node name="Placa" parent="." instance=ExtResource( 8 )]
 position = Vector2( 65, 549 )
 
 [node name="Fim" type="Area2D" parent="."]
 position = Vector2( 36, 549 )
+collision_layer = 32
+collision_mask = 32
 
 [node name="TriggerFim" type="CollisionShape2D" parent="Fim"]
 position = Vector2( -26, -57 )
 shape = SubResource( 3 )
 
 [node name="Barreira" type="StaticBody2D" parent="Fim"]
+collision_layer = 32
+collision_mask = 32
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Fim/Barreira"]
 position = Vector2( -48, -57 )

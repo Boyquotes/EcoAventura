@@ -1,3 +1,4 @@
+tool
 extends Area2D
 class_name Lixeira
 
@@ -10,14 +11,16 @@ enum TipoLixeira {
 	papel = 3,
 	organico = 4
 }
-
-export(TipoLixeira) var tipo_de_lixeira
-
 onready var sprite = $TodasLixeiras
 
-func _ready():
-	sprite.frame_coords = Vector2( 0, tipo_de_lixeira)
+export(TipoLixeira) onready var tipo_de_lixeira setget setTipoLixeira
 
+func setTipoLixeira(tipo: int):
+	tipo_de_lixeira = tipo
+	if sprite: sprite.frame_coords = Vector2(0, tipo_de_lixeira)
+
+func _ready():
+	sprite.frame_coords = Vector2(0, tipo_de_lixeira)
 
 func _on_body_entered(body):
 	if body is Player:

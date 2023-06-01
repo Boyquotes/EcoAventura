@@ -1,14 +1,12 @@
 extends Control
 
 var carregandoNivel = false
-
 var nivelSelecionado = false
-
 var nivelAtual = 1
 
 onready var player = $Fundo1/Zeca/AnimationPlayer
-
-onready var proximoNivel: int = 1
+onready var trans: AnimationPlayer = get_node("/root/Game/CanvasLayer/Transicoes/AnimationPlayer")
+onready var proximoNivel: int = 2
 
 func _ready():
 	setZecaPosition()
@@ -28,6 +26,8 @@ func _input(event: InputEvent):
 	elif event.is_action_pressed("ui_accept") and not nivelSelecionado:
 		nivelSelecionado = true
 		player.play("Pular")
+		yield(get_tree().create_timer(0.2), "timeout")
+		trans.play_backwards("FadeIn")
 
 
 func _on_AnimationPlayer_animation_finished(anim):
@@ -38,8 +38,9 @@ func _on_AnimationPlayer_animation_finished(anim):
 
 func voltarSelecao():
 	player.play("RESET")
+	trans.play("FadeIn")
 	nivelSelecionado = false
-	if proximoNivel == nivelAtual:
+	if proximoNivel >= nivelAtual:
 		nivelAtual = nivelAtual + 1
 	setZecaPosition()
 	for child in $Fundo1.get_children():

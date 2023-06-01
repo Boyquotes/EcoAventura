@@ -84,12 +84,9 @@ tracks/0/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=5]
 
 [node name="Lixo" type="Area2D"]
-collision_layer = 0
-monitoring = false
-monitorable = false
 script = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -99,9 +96,6 @@ anims/RESET = SubResource( 4 )
 anims/picked = SubResource( 1 )
 anims/spinning = SubResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 3 )
-
 [node name="lixos" type="Sprite" parent="."]
 scale = Vector2( 0.140625, 0.140625 )
 texture = ExtResource( 1 )
@@ -109,4 +103,5 @@ hframes = 5
 vframes = 15
 frame = 17
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 5 )

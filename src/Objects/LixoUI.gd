@@ -16,13 +16,18 @@ var listaLixos: Array = [
 
 func _ready():
 	lixoAtual = listaLixos.pop_front()
-	lixos.frame_coords = lixoAtual
 	textura = lixoAtual.y
 	tipoDeLixeira = lixoAtual.x
 
-func proximoLixo():
-	lixoAtual = listaLixos.pop_front()
-	textura = lixoAtual.y
-	tipoDeLixeira = lixoAtual.x
-	lixos.frame_coords = lixoAtual
+func proximoLixo() -> bool:
+	var result = listaLixos.pop_front()
+	if result != null:
+		lixoAtual = result
+		textura = lixoAtual.y
+		tipoDeLixeira = lixoAtual.x
+		return false
+	else:
+		lixoAtual = Vector2(-1, 0)
+		hide()
+		return true
 	

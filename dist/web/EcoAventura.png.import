@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/EcoAventura.png-266b8f3ed52b526089d3549ace8f426e.stex"
+path="res://.import/EcoAventura.png-a21b4ade187dcd4b3a737db53205743f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://build/web/EcoAventura.png"
-dest_files=[ "res://.import/EcoAventura.png-266b8f3ed52b526089d3549ace8f426e.stex" ]
+source_file="res://dist/web/EcoAventura.png"
+dest_files=[ "res://.import/EcoAventura.png-a21b4ade187dcd4b3a737db53205743f.stex" ]
 
 [params]
 

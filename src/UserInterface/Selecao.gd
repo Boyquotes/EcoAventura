@@ -24,7 +24,8 @@ func _input(event: InputEvent):
 		if proximoNivel == 2 and nivelAtual > 0:
 			proximoNivel = 1
 			setZecaPosition()
-	elif event.is_action_pressed("ui_accept") and not nivelSelecionado:
+	elif (event.is_action_pressed("ui_accept") or (event is InputEventMouse and event.is_pressed())) and not nivelSelecionado:
+		nivelSelecionado = true
 		comecarNivel()
 
 func comecarNivel():
@@ -61,7 +62,7 @@ func getProximoNivel() -> NivelSelecao:
 
 func setZecaPosition():
 	$Fundo1/Zeca.position = getProximoNivel().rect_position + getProximoNivel().rect_pivot_offset
-	
+
 func fase_pressed(id: int):
 	print(id)
 	if id != proximoNivel:
@@ -69,3 +70,7 @@ func fase_pressed(id: int):
 		setZecaPosition()
 	else:
 		comecarNivel()
+
+
+func _on_Timer_timeout():
+	pass
